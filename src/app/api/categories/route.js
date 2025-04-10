@@ -1,12 +1,18 @@
 import { openDB } from "@/lib/db";
 
-export default async function handler(req, res) {
+export async function GET(request) {
     try {
         const db = await openDB();
-        const categories = await db.all("SELECT * FROM category");
-        res.status(200).json(categories);
+        const categories = await db.all(`SELECT * FROM category`);
+        return new Response(JSON.stringify({ categories }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+        });
     } catch (err) {
         console.error("Error fetching categories:", err);
-        res.status(500).json({ error: "Failed to fetch categories" });
+        return new Response(
+            JSON.stringify({ error: "Error fetching categories" }),
+            { status: 500, headers: { "Content-Type": "application/json" } }
+        );
     }
 }

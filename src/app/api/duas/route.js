@@ -1,31 +1,32 @@
 import { openDB } from "@/lib/db";
 
-export default async function handler(req, res) {
-    const { cat_id, subcat_id } = req.query;
+export async function GET(request) {
+    const { searchParams } = new URL(request.url);
+    const cat_id = searchParams.get("cat_id");
+    const subcat_id = searchParams.get("subcat_id");
     try {
         const db = await openDB();
-        let query = "SELECT * From dua";
-        const conditions = [];
+        let query = `SELECT * FROM dua`;
         const params = [];
 
-        if (cat_id) {
-            conditions.push("cat_id = ?");
+        if (subcat_id) {
+            query += ` WHERE subcat_id = ?`;
+            params.push(subcat_id);
+        } else if (cat_id) {
+            query += ` WHERE cat_id = ?`;
             params.push(cat_id);
         }
 
-        if (subcat_id) {
-            conditions.push("subcat_id = ?");
-            params.push(subcat_id);
-        }
-
-        if (conditions.length > 0) {
-            query += "WHERE" + conditions.join("AND");
-        }
-
         const duas = await db.all(query, params);
-        res.status(200).json(duas);
+        return new Response(JSON.stringify({ duas }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+        });
     } catch (err) {
         console.error("Error fetching duas:", err);
-        res.status(500).json({ error: "Failed to fetch duas" });
+        return new Response(JSON.stringify({ error: "Error fetching duas" }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" },
+        });
     }
 }

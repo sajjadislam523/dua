@@ -1,20 +1,24 @@
 import { openDB } from "@/lib/db";
 
-export default async function handler(req, res) {
-    const { cat_id } = req.query;
-    // console.log("cat_id", cat_id);
+export async function GET(request) {
+    const { searchParams } = new URL(request.url);
+    const cat_id = searchParams.get("cat_id");
     try {
         const db = await openDB();
-        let query = "SELECT * FROM subcategories";
-        const params = [];
-        if (cat_id) {
-            query += "WHERE cat_id = ?";
-            params.push(cat_id);
-        }
+        const query = cat_id
+            ? `SELECT * FROM sub_category WHERE cat_id = ?`
+            : `SELECT * FROM sub_category`;
+        const params = cat_id ? [cat_id] : [];
         const subcategories = await db.all(query, params);
-        res.status(200).json({ subcategories });
+        return new Response(JSON.stringify({ subcategories }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+        });
     } catch (err) {
-        console.error("Error fetching subcategories:", error);
-        res.status(500).json({ error: "Failed to fetch subcategories" });
+        console.error("Error fetching subcategories:", err);
+        return new Response(
+            JSON.stringify({ error: "Error fetching subcategories" }),
+            { status: 500, headers: { "Content-Type": "application/json" } }
+        );
     }
 }
