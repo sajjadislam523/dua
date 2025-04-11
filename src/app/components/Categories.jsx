@@ -15,7 +15,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
     const categories = data?.categories || [];
 
     return (
-        <div className="h-full w-full rounded-xl overflow-y-auto bg-white">
+        <div className="h-screen w-full rounded-xl overflow-y-auto bg-white">
             <h1 className="bg-[#1FA45B] font-bold text-white py-3 text-center rounded-t-xl">
                 Categories
             </h1>

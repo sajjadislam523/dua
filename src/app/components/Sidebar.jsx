@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const Sidebar = () => {
     return (
-        <div className="w-3 min-w-[5rem] flex flex-col items-center justify-between h-screen text-white">
+        <div className="w-3 min-w-[5rem] flex flex-col items-center justify-between h-screen bg-white rounded-xl shadow-lg">
             <Image src={logo} width={73} height={73} alt="logo" />
             <nav>
                 <ul>
