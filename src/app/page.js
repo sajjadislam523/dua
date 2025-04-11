@@ -11,7 +11,7 @@ export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     return (
-        <div className="flex h-screen ">
+        <div className="flex pb-4 bg-gray-100 ">
             <div>
                 <Sidebar />
             </div>

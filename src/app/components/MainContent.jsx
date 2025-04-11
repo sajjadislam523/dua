@@ -14,7 +14,7 @@ const MainContent = ({ selectedCategory }) => {
 
     if (!selectedCategory) {
         return (
-            <div className="flex-1 p-4">
+            <div className="flex-1 p-4 text-black font-poppins items-center justify-center flex flex-col h-screen bg-white rounded-xl">
                 <p>Please select a category to view content.</p>
             </div>
         );
@@ -27,14 +27,14 @@ const MainContent = ({ selectedCategory }) => {
     const mergedDuas = mergeDuas(rawDuas);
 
     return (
-        <main className="w-full p-4 overflow-auto bg-white dark:bg-gray-900 rounded-lg shadow-md h-full">
+        <main className="w-full overflow-auto text-black rounded-lg px-2 h-screen">
             {mergedDuas.length === 0 && (
                 <p>No duas available for this category.</p>
             )}
             {mergedDuas.map((dua) => (
                 <div
                     key={dua.dua_id} // Ensure dua_id is unique after merging duplicates
-                    className="mb-4 p-4 rounded-lg shadow flex flex-col space-y-2"
+                    className="mb-4 p-4 rounded-lg shadow flex flex-col space-y-2 bg-white"
                 >
                     <h3 className="text-lg font-inter font-semibold text-[#1FA45B] flex items-center gap-2">
                         <span>
