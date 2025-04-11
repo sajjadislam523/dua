@@ -12,7 +12,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
     const categories = data.categories || [];
 
     return (
-        <div className="h-full w-64 rounded-xl overflow-y-auto mt-5 mr-5">
+        <div className="h-full w-full rounded-xl overflow-y-auto mt-5 mr-5">
             <h1 className="bg-[#1FA45B] font-bold text-white py-3 text-center rounded-t-xl">
                 Categories
             </h1>
@@ -35,8 +35,10 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
                     <li
                         key={cat.id}
                         onClick={() => setSelectedCategory(cat.cat_id)}
-                        className={`p-2 cursor-pointer rounded hover:bg-gray-200 ${
-                            selectedCategory === cat.cat_id ? "bg-gray-300" : ""
+                        className={`p-2 cursor-pointer rounded hover:bg-gray-200 hover:text-black ${
+                            selectedCategory === cat.cat_id
+                                ? "bg-gray-300 text-black"
+                                : ""
                         }`}
                     >
                         <div>{cat.cat_name_en}</div>

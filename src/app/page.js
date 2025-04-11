@@ -15,18 +15,22 @@ export default function Home() {
             <div>
                 <Sidebar />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col flex-1">
                 <Navbar />
-                <div className="flex flex-1">
-                    <Categories
-                        selectedCategory={selectedCategory}
-                        setSelectedCategory={setSelectedCategory}
-                    />
-                    <MainContent selectedCategory={selectedCategory} />
+                <div className=" flex-1 grid grid-cols-8 gap-2 h-full w-full">
+                    <div className="col-span-2 h-full">
+                        <Categories
+                            selectedCategory={selectedCategory}
+                            setSelectedCategory={setSelectedCategory}
+                        />
+                    </div>
+                    <div className="col-span-4 h-full">
+                        <MainContent selectedCategory={selectedCategory} />
+                    </div>
+                    <div className="col-span-2 h-full">
+                        <Settings />
+                    </div>
                 </div>
-            </div>
-            <div>
-                <Settings />
             </div>
         </div>
     );
