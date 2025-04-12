@@ -3,7 +3,6 @@
 import ellipse1 from "@/assets/icons/Ellipse_1.png";
 import ellipse2 from "@/assets/icons/Ellipse_2.png";
 import ellipse3 from "@/assets/icons/Ellipse_3.png";
-import ellipse4 from "@/assets/icons/Ellipse_4.png";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -17,7 +16,7 @@ const Settings = () => {
         {
             id: 4,
             label: "Appearance Settings",
-            icon: ellipse4,
+            icon: ellipse3,
             isDropdown: true,
         },
     ];

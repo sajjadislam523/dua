@@ -11,15 +11,14 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
 
     if (error) return <div>Error loading categories</div>;
 
-    // If data hasn't loaded, data will be undefined
-    const categories = data?.categories || [];
-
     return (
-        <div className="h-screen w-full rounded-xl overflow-y-auto bg-white">
+        <div className="h-screen w-full rounded-xl bg-white flex flex-col">
+            {/* Header */}
             <h1 className="bg-[#1FA45B] font-bold text-white py-3 text-center rounded-t-xl">
                 Categories
             </h1>
 
+            {/* Search Bar */}
             <div className="p-4">
                 <div className="relative">
                     <input
@@ -31,10 +30,10 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
                 </div>
             </div>
 
-            <div className="px-4 pb-4">
-                {/* If data is not loaded yet, show the spinner inside this section */}
+            {/* Scrollable List Container */}
+            <div className="px-4 pb-4 flex-1 overflow-y-auto">
                 {!data ? (
-                    <div className="flex justify-center items-center h-24">
+                    <div className="flex justify-center items-center h-full">
                         <svg
                             className="animate-spin h-6 w-6 text-[#1FA45B]"
                             xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +60,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => {
                     </div>
                 ) : (
                     <ul>
-                        {categories.map((cat) => (
+                        {data.categories.map((cat) => (
                             <li
                                 key={cat.id}
                                 onClick={() => setSelectedCategory(cat.cat_id)}
