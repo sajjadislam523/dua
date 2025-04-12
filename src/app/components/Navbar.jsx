@@ -1,15 +1,31 @@
 import profile from "@/assets/icons/profile.png";
 import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
-import { RxHamburgerMenu } from "react-icons/rx";
-const Navbar = ({ onHamburgerClick }) => {
+import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
+const Navbar = ({ onHamburgerClick, sidebarOpen }) => {
     return (
         <div className="flex items-center justify-between p-4">
             <div className="text-black flex items-center gap-4">
-                <RxHamburgerMenu
-                    className="cursor-pointer md:hidden"
-                    onClick={onHamburgerClick}
-                />
+                {sidebarOpen ? (
+                    <RxCross2
+                        className={`transition-all duration-300 ease-in-out inset-0 cursor-pointer${
+                            sidebarOpen
+                                ? "opacity-100 scale-100"
+                                : "opacity-0 scale-90"
+                        }`}
+                        onClick={onHamburgerClick}
+                    />
+                ) : (
+                    <RxHamburgerMenu
+                        className={`transition-all duration-300 ease-in-out inset-0 cursor-pointer${
+                            sidebarOpen
+                                ? "opacity-0 scale-90"
+                                : "opacity-100 scale-100"
+                        }`}
+                        onClick={onHamburgerClick}
+                    />
+                )}
+
                 <h1 className="font-semibold font-poppins text-xl md:text-2xl font">
                     Dua Page
                 </h1>

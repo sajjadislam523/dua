@@ -17,7 +17,10 @@ export default function Home() {
                 <Sidebar />
             </div>
             <div className="flex flex-col flex-1">
-                <Navbar onHamburgerClick={() => setSidebarOpen(!sidebarOpen)} />
+                <Navbar
+                    onHamburgerClick={() => setSidebarOpen(!sidebarOpen)}
+                    sidebarOpen={sidebarOpen}
+                />
                 <div className=" flex-1 grid grid-cols-8 gap-2 h-full w-full">
                     <div
                         className={`lg:col-span-2 md:col-span-3 col-span-5 h-full left-0 z-50 fixed transform transition-transform duration-300 ${
