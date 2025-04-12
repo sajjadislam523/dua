@@ -8,7 +8,7 @@ const Navbar = ({ onHamburgerClick, sidebarOpen }) => {
             <div className="text-black flex items-center gap-4">
                 {sidebarOpen ? (
                     <RxCross2
-                        className={`transition-all duration-300 ease-in-out inset-0 cursor-pointer${
+                        className={`transition-all duration-300 ease-in-out inset-0 cursor-pointer md:hidden ${
                             sidebarOpen
                                 ? "opacity-100 scale-100"
                                 : "opacity-0 scale-90"
@@ -17,7 +17,7 @@ const Navbar = ({ onHamburgerClick, sidebarOpen }) => {
                     />
                 ) : (
                     <RxHamburgerMenu
-                        className={`transition-all duration-300 ease-in-out inset-0 cursor-pointer${
+                        className={`transition-all duration-300 ease-in-out inset-0 cursor-pointer md:hidden ${
                             sidebarOpen
                                 ? "opacity-0 scale-90"
                                 : "opacity-100 scale-100"
