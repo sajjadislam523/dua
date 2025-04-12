@@ -7,7 +7,7 @@ const Navbar = ({ onHamburgerClick }) => {
         <div className="flex items-center justify-between p-4">
             <div className="text-black flex items-center gap-4">
                 <RxHamburgerMenu
-                    className="cursor-pointer"
+                    className="cursor-pointer md:hidden"
                     onClick={onHamburgerClick}
                 />
                 <h1 className="font-semibold font-poppins text-xl md:text-2xl font">
